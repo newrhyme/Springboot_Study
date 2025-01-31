@@ -1,3 +1,8 @@
+/*
+build.gradle(프로젝트의 빌드 도구)
+- build.gradle에 라이브러리들을 추가하면서 개발
+-> 포함된 라이브러리들은 External Librarise에 들어있음.
+ */
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.4.2'
@@ -9,7 +14,7 @@ version = '0.0.1-SNAPSHOT'
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
+		languageVersion = JavaLanguageVersion.of(17)
 	}
 }
 

@@ -1,4 +1,4 @@
-package com.study.Board.domain1.post;
+package com.study.Board.domain.post;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -6,16 +6,17 @@ import java.util.List;
 
 @Mapper
 public interface PostMapper {
+
     /**
-     * 저장
-     * @param params - 게시물 정보
+     * 게시글 저장
+     * @param params - 게시글 정보
      */
     void save(PostRequest params);
 
     /**
      * 게시글 상세정보 조회
      * @param id - PK
-     * @return 게시글 상세 정보
+     * @return 게시글 상세정보
      */
     PostResponse findById(Long id);
 
@@ -32,12 +33,6 @@ public interface PostMapper {
     void deleteById(Long id);
 
     /**
-     * 게시글 삭제
-     * @param id - PK
-     */
-    void delete(Long id);
-
-    /**
      * 게시글 리스트 조회
      * @return 게시글 리스트
      */
@@ -48,4 +43,5 @@ public interface PostMapper {
      * @return 게시글 수
      */
     int count();
+
 }

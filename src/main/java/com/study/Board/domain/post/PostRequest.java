@@ -1,4 +1,4 @@
-package com.study.Board.domain1.post;
+package com.study.Board.domain.post;
 // Request 클래스
 
 import lombok.Getter;

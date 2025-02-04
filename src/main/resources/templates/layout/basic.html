@@ -2,10 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-<head>
-    <title th:text="${title}">기본 레이아웃</title>
-</head>
-
+<head th:replace="~{fragments/header :: main-head}"></head>  <!-- ✅ header.html 포함 -->
 <body>
 <header>
     <h1>공용 헤더</h1>
@@ -14,9 +11,11 @@
 <main>
     <th:block layout:fragment="content"></th:block> <!--  여기에 `write.html`의 내용이 삽입됨 -->
 </main>
-    <th:block layout:fragment="script"></th:block> <!--  여기 script 추가 -->
+
+<th:block layout:fragment="script"></th:block> <!--  여기 script 추가 -->
+
 <footer>
-    <p>공용 푸터</p>
+    <p>푸터</p>
 </footer>
 </body>
 </html>

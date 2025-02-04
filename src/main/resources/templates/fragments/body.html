@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:replace="~{layout/head :: main-head}"></head>  <!-- ✅ 추가된 부분 -->
+
 <body th:fragment="main-body">
 <div id="adm_wrap">
   <header>
@@ -33,15 +36,14 @@
 
     <!--/* 우측 영역 */-->
     <div class="rcontent">
-
       <!--/* 페이지별 컨텐츠 */-->
       <th:block layout:fragment="content"></th:block>
-
     </div>
   </div> <!--/* // #container */-->
-  <footer>Copyright(c)네임즈.All rights reserved.</footer>
+  <footer>^O^</footer>
 </div>
 
+<!-- ✅ JS 파일 유지 -->
 <script th:src="@{/js/function.js}"></script>
 <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
 <script th:src="@{/js/common.js}"></script>

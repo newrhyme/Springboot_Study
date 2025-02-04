@@ -26,9 +26,9 @@ public class PostService {
     /**
      * 게시글 상세정보 조회
      * @param id - PK
-     * @return 게시글 상세 정보
+     * @return 게시글 상세정보
      */
-    public PostResponse findAllPosts(final Long id) {
+    public PostResponse findPostById(Long id) {
         return postMapper.findById(id);
     }
 
@@ -59,5 +59,8 @@ public class PostService {
      */
     public List<PostResponse> findAllPost() {
         return postMapper.findAll();
+    }
+    public PostResponse findAllPosts(final Long id) {
+        return postMapper.findById(id);
     }
 }

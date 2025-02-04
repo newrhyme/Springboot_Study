@@ -27,7 +27,7 @@ public interface PostMapper {
     void update(PostRequest params);
 
     /**
-     * 게시글 삭제
+     * 게시글 삭제(논리적 삭제)
      * @param id - PK
      */
     void deleteById(Long id);

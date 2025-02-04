@@ -33,7 +33,7 @@ public class PostMapperTest {
 
     @Test
     void findById() {
-        PostResponse post = postMapper.findById(3L);
+        PostResponse post = postMapper.findById(1L);
         try {
             String postJson = new ObjectMapper().registerModule(new JavaTimeModule()).writeValueAsString(post);
             System.out.println(postJson);
@@ -68,8 +68,22 @@ public class PostMapperTest {
     @Test
     void delete() {
         System.out.println("삭제 이전의 전체 게시글 개수는 : " + postMapper.findAll().size() + "개입니다.");
-        postMapper.deleteById(1L);
+        postMapper.deleteById(6L);
         System.out.println("삭제 이후의 전체 게시글 개수는 : " + postMapper.findAll().size() + "개입니다.");
     }
+
+    @Test
+    void delete1() {
+        System.out.println("삭제 이전의 전체 게시글 개수는 : " + postMapper.findAll().size() + "개입니다.");
+
+        postMapper.deleteById(1L);
+
+        // 삭제 후 해당 게시글 직접 조회
+        PostResponse deletedPost = postMapper.findById(1L);
+        System.out.println("삭제된 게시글의 delete_yn 값: " + deletedPost.getDeleteYn());
+
+        System.out.println("삭제 이후의 전체 게시글 개수는 : " + postMapper.findAll().size() + "개입니다.");
+    }
+
 
 }

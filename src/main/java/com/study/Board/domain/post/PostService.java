@@ -28,7 +28,7 @@ public class PostService {
      * @param id - PK
      * @return 게시글 상세정보
      */
-    public PostResponse findPostById(Long id) {
+    public PostResponse findPostById(final Long id) {
         return postMapper.findById(id);
     }
 

@@ -41,6 +41,7 @@ public class PostController {
         return "post/list";
     }
 
+    // 게시글 상세 정보
     @GetMapping("/post/view.do")
     public String openPostView(@RequestParam final Long id, Model model) {
         PostResponse post = postService.findPostById(id);
@@ -48,9 +49,17 @@ public class PostController {
         return "post/view";
     }
 
+    // 게시글 업데이트
     @PostMapping("/post/update.do")
     public String updatePost(final PostRequest params) {
         postService.updatePost(params);
+        return "redirect:/post/list.do";
+    }
+
+    // 게시글 삭제 (논리적 삭제)
+    @PostMapping("/post/delete.do")
+    public String deletePost(@RequestParam final Long id) {
+        postService.deletePost(id);
         return "redirect:/post/list.do";
     }
 }

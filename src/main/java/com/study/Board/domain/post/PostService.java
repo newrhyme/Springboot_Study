@@ -60,7 +60,4 @@ public class PostService {
     public List<PostResponse> findAllPost() {
         return postMapper.findAll();
     }
-    public PostResponse findAllPosts(final Long id) {
-        return postMapper.findById(id);
-    }
 }

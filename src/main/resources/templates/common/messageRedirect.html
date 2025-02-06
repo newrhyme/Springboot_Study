@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/header :: main-head"></head>
+  <body>
+    <form th:if="${not #maps.isEmpty( params.data )}" id="redirectForm" th:action="${params.redirectUri}" th:method="${params.method}" style="display: none;">
+      <!--
+       MessageDto에 Map 형식으로 선언된 data를 순환해서
+       각 데이터의 key-value를 hidden 타입의 input으로 추가함.
+       -->
+      <input th:each="key, status : ${params.data.keySet()}" type="hidden" th:name="${key}" th:value="${params.data.get(key)}" />
+    </form>
+
+    <script th:inline="javascript">
+      /* <![CDATA[ */
+
+      // 컨트롤러에서 전달받은 message가 있는 경우, alert 메시지 보여줌
+      window.onload = () => {
+        const message = [[ ${params.message} ]];
+        if (message) {
+          alert(message);
+        }
+
+        const form = document.getElementById('redirectForm');
+        if (form) {
+          form.submit();
+          return false;
+        }
+
+        const redirectUri = [[ ${params.redirectUri} ]];
+        location.href = redirectUri;
+      }
+
+      /* ]]> */
+    </script>
+  </body>
+</html>

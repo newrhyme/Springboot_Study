@@ -18,11 +18,12 @@ public class PostController {
     // 게시글 작성 페이지
     @GetMapping("/post/write.do")
     public String openPostWrite(@RequestParam(value = "id", required = false) final Long id, Model model) {
+        // id가 있으면 기존 게시글 조회 -> model에 추가 (수정)
         if (id != null) {
             PostResponse post = postService.findPostById(id);
-            model.addAttribute("post", post);
+            model.addAttribute("post", post);   // View에 "post"라는 이름으로 데이터 전달
         }
-        return "post/write";
+        return "post/write";    // write.html 템플릿 렌더링하면서 "post" 데이터를 Thymeleaf에서 사용할 수 있게 함.
     }
 
     // 신규 게시글 생성
@@ -45,5 +46,11 @@ public class PostController {
         PostResponse post = postService.findPostById(id);
         model.addAttribute("post", post);
         return "post/view";
+    }
+
+    @PostMapping("/post/update.do")
+    public String updatePost(final PostRequest params) {
+        postService.updatePost(params);
+        return "redirect:/post/list.do";
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
@@ -29,9 +30,10 @@ public class PostController {
 
     // 신규 게시글 생성
     @PostMapping("/post/save.do")
-    public String savePost(final PostRequest params) {
+    public String savePost(final PostRequest params, Model model) {
         postService.savePost(params);
-        return "redirect:/post/list.do";
+        MessageDto message = new MessageDto("게시글 생성이 완료되었습니다.", "/post/list.do", RequestMethod.GET, null);
+        return showMessageAndRedirect(message, model);
     }
 
     // 게시글 리스트 페이지
@@ -50,18 +52,20 @@ public class PostController {
         return "post/view";
     }
 
-    // 게시글 업데이트
+    // 기존 게시글 업데이트
     @PostMapping("/post/update.do")
-    public String updatePost(final PostRequest params) {
+    public String updatePost(final PostRequest params, Model model) {
+        MessageDto message = new MessageDto("게시글 수정이 완료되었습니다.", "/post/list.do", RequestMethod.GET, null);
         postService.updatePost(params);
-        return "redirect:/post/list.do";
+        return showMessageAndRedirect(message, model);
     }
 
     // 게시글 삭제 (논리적 삭제)
     @PostMapping("/post/delete.do")
-    public String deletePost(@RequestParam final Long id) {
+    public String deletePost(@RequestParam final Long id, Model model) {
+        MessageDto message = new MessageDto("게시글 삭제가 완료되었습니다.", "/post/list.do", RequestMethod.GET, null);
         postService.deletePost(id);
-        return "redirect:/post/list.do";
+        return showMessageAndRedirect(message, model);
     }
 
     // 사용자에게 메시지 전달, 페이지 리다이렉트

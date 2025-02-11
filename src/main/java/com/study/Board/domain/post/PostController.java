@@ -55,16 +55,16 @@ public class PostController {
     // 기존 게시글 업데이트
     @PostMapping("/post/update.do")
     public String updatePost(final PostRequest params, Model model) {
-        MessageDto message = new MessageDto("게시글 수정이 완료되었습니다.", "/post/list.do", RequestMethod.GET, null);
         postService.updatePost(params);
+        MessageDto message = new MessageDto("게시글 수정이 완료되었습니다.", "/post/list.do", RequestMethod.GET, null);
         return showMessageAndRedirect(message, model);
     }
 
     // 게시글 삭제 (논리적 삭제)
     @PostMapping("/post/delete.do")
     public String deletePost(@RequestParam final Long id, Model model) {
-        MessageDto message = new MessageDto("게시글 삭제가 완료되었습니다.", "/post/list.do", RequestMethod.GET, null);
         postService.deletePost(id);
+        MessageDto message = new MessageDto("게시글 삭제가 완료되었습니다.", "/post/list.do", RequestMethod.GET, null);
         return showMessageAndRedirect(message, model);
     }
 

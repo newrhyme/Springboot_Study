@@ -28,7 +28,7 @@
     resultsettable : SQL 조회 결과를 테이블 형태로 출력
     connection : Connection의 연결과 종료에 관련된 로그 출력
     -->
-    <logger name="com.study" level="DEBUG" appender-ref="console" />
+    <logger name="com.study.Board" level="DEBUG" appender-ref="console" />
     <logger name="jdbc.sqlonly" level="INFO" appender-ref="console-infolog" />
     <logger name="jdbc.resultsettable" level="INFO" appender-ref="console-infolog" />
 

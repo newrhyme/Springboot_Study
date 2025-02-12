@@ -2,7 +2,7 @@
 <configuration debug="true">
 
     <!-- Appenders -->
-    <!-- append : 전달받은 로그를 어디까지 출력할지 결정 (콘솔, 파일 저장, DB 저장 등) -->
+    <!-- append : 전달받은 로그를 어디에 출력할지 결정 (콘솔, 파일 저장, DB 저장 등) -->
     <!-- encoder : appender에 포함되어 출력할 로그의 형식을 지정 -->
     <!-- logger : 로그를 출력하는 요소 -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
@@ -28,7 +28,7 @@
     resultsettable : SQL 조회 결과를 테이블 형태로 출력
     connection : Connection의 연결과 종료에 관련된 로그 출력
     -->
-    <logger name="com.study.Board" level="DEBUG" appender-ref="console" />
+    <logger name="com.study" level="DEBUG" appender-ref="console" />
     <logger name="jdbc.sqlonly" level="INFO" appender-ref="console-infolog" />
     <logger name="jdbc.resultsettable" level="INFO" appender-ref="console-infolog" />
 

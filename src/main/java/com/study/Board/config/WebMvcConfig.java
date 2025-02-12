@@ -13,8 +13,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        log.info("LoggerIntercptor 등록됐다");
-
         registry.addInterceptor(new LoggerInterceptor())
                 .excludePathPatterns("/css/**", "/images/**", "/js/**");
     }
